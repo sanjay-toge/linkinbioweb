@@ -1,0 +1,60 @@
+<!-- <mat-toolbar color="primary">
+  <span>Link in Bio</span>
+  <span class="spacer"></span>
+  <a mat-button routerLink="/dashboard">Dashboard</a>
+  <a mat-button routerLink="/preview">Preview</a>
+</mat-toolbar> -->
+
+<!-- <app-top-nav></app-top-nav> -->
+<mat-sidenav-container class="nav-container">
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    [(opened)]="opened"
+    (opened)="events.push('open!')"
+    (closed)="events.push('close!')"
+  >
+    Sidenav content
+    <p>
+      <button matButton (click)="sidenav.toggle()">sidenav.toggle()</button>
+    </p>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-grid-list cols="12" rowHeight="100%" gutterSize="0px">
+      <!-- 10% width (1 out of 10 columns) -->
+      <mat-grid-tile
+        *ngIf="!opened"
+        [colspan]="1"
+        style="background: lightblue"
+      >
+        <div class="sidebar">
+          <p>
+            <button matButton (click)="sidenav.toggle()">
+              sidenav.toggle()
+            </button>
+          </p>
+        </div>
+      </mat-grid-tile>
+
+      <!-- 90% width (9 out of 10 columns) -->
+      <mat-grid-tile [colspan]="opened ? 12 : 11">
+        <div class="content">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <!-- 
+    <mat-grid-list cols="2" rowHeight="1:1">
+      <mat-grid-tile> </mat-grid-tile>
+      <mat-grid-tile> </mat-grid-tile>
+    </mat-grid-list> -->
+
+    <!-- <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- 
+<mat-toolbar color="primary" class="footer">
+  <span>© 2025 Link in Bio</span>
+</mat-toolbar> -->
