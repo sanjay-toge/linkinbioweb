@@ -21,3 +21,16 @@
     </div>
   </mat-sidenav-content> 
 </mat-sidenav-container> -->
+
+<mat-sidenav
+    #sidenav
+    mode="side"
+    [(opened)]="opened"
+    (opened)="events.push('open!')"
+    (closed)="events.push('close!')"
+  >
+    Sidenav content
+    <p>
+      <button matButton (click)="sidenav.toggle()">sidenav.toggle()</button>
+    </p>
+  </mat-sidenav>

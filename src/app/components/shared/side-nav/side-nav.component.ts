@@ -10,5 +10,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   styleUrl: './side-nav.component.css'
 })
 export class SideNavComponent {
-
+  events: string[] = [];
+  opened: boolean = true;
 }

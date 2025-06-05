@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
+html {
+  color-scheme: light dark;
+  @include mat.theme(
+    (
+      color: mat.$blue-palette,
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: rgb(217, 218, 222);
+}
+
+.d-grid {
+  display: grid;
+}
+
+.d-flex,
+.flex {
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  /* Removes underline */
+  /* color: inherit; */
+  /* Keeps the color same as parent */
+}
+
+// :root {
+//   @include mat.button-overrides(
+//     (
+//       filled-container-color: rgb(232, 155, 14),
+//       filled-disabled-container-color: red,
+//     )
+//   );
+// }

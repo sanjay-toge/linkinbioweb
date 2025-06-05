@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -11,6 +11,9 @@ import { SideNavComponent } from './components/shared/side-nav/side-nav.componen
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+
 // import { AppRoutingModule } from './app-routing.module';
 
 @Component({
@@ -22,18 +25,34 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     DragDropModule,
     RouterOutlet,
+    RouterModule,
     // TopNavComponent,
     // SideNavComponent,
     MatSidenavModule,
     MatGridList,
     MatGridTile,
-    CommonModule
+    CommonModule,
+    MatListModule,
+    MatIconModule
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'LinkBioWeb';
   events: string[] = [];
   opened: boolean = true;
+  selectedRoute: string = 'Dashboard';
+  handleNavClick(event: Event) {
+    const target = event.target as HTMLElement;
+    const anchor = target.closest('a[mat-list-item]');
+
+    if (anchor) {
+      const route = anchor.getAttribute('routerLink');
+      console.log('Navigated to:', route);
+      this.selectedRoute = anchor.getElementsByTagName('span')[2].innerHTML
+      // You can also trigger other shared logic here
+    }
+  }
+
 }
