@@ -24,10 +24,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class UpdateTemplateComponent {
   toolboxItems = [
-    { type: 'button', label: 'Button', text: 'Click Me' },
-    { type: 'input', label: 'Input', text: 'Enter text' },
-    { type: 'link', label: 'Link', text: 'Go to Link' },
-    { type: 'image', label: 'Image', text: 'Image' },
+     { type: 'button', label: 'Button', text: 'Click Me' },
+    { type: 'input', label: 'Input', text: 'Enter Text' },
+    { type: 'link', label: 'Link', text: 'Visit Link' },
+    { type: 'grid', label: 'Grid Layout', children: [] },
+    { type: 'flex', label: 'Flex Layout', children: [] }
   ];
   
   droppedElements: any[] = [];
