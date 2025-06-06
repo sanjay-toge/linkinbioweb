@@ -4,6 +4,7 @@ import { TemplateComponent } from './components/template/template.component';
 import { MyStatsComponent } from './components/my-stats/my-stats.component';
 import { AiToolComponent } from './components/ai-tool/ai-tool.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { UpdateTemplateComponent } from './components/update-template/update-template.component';
 
 export const routes: Routes = [
     {
@@ -25,5 +26,13 @@ export const routes: Routes = [
     {
         path: 'settings', // The URL path for the dashboard
         component: SettingsComponent, // The component to render
+    },
+    {
+        path: 'update-template', // The URL path for the dashboard
+        component: UpdateTemplateComponent, // The component to render
+    },
+    {
+        path: '**', // Wildcard route for a 404 page
+        redirectTo: '', // Redirect to the dashboard if no other route matches
     }
 ];
