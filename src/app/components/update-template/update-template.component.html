@@ -1,7 +1,11 @@
-<div cdkDropListGroup  class="editor-wrapper">
+<div cdkDropListGroup class="editor-wrapper">
   <app-toolbox></app-toolbox>
 
-  <app-canvas [blocks]="blocks" class="canvas-container" (blockSelected)="onBlockSelected($event)">
+  <app-canvas
+    [blocks]="blocks"
+    class="canvas-container"
+    (blockSelected)="onBlockSelected($event)"
+  >
   </app-canvas>
 
   <app-properties-panel

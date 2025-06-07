@@ -3,5 +3,85 @@
   <input [(ngModel)]="selectedBlock.content" />
 
   <label *ngIf="selectedBlock.type === 'link'">URL</label>
-  <input *ngIf="selectedBlock.type === 'link'" [(ngModel)]="selectedBlock.props.href" />
+  <input
+    *ngIf="selectedBlock.type === 'link'"
+    [(ngModel)]="selectedBlock!.props!.href"
+  />
+   <label *ngIf="selectedBlock.type === 'image'">URL</label>
+  <input
+    *ngIf="selectedBlock.type === 'image'"
+    [(ngModel)]="selectedBlock!.props!.src"
+  />
+  <h3>Styles</h3>
+
+  <label>Display:</label>
+  <select
+    *ngIf="selectedBlock.styles"
+    [(ngModel)]="selectedBlock.styles.display"
+    (change)="update(selectedBlock)"
+  >
+    <option value="block">Block</option>
+    <option value="flex">Flex</option>
+    <option value="grid">Grid</option>
+  </select>
+
+  <label>Flex Direction:</label>
+  <select
+    *ngIf="selectedBlock.styles"
+    [(ngModel)]="selectedBlock.styles.flexDirection"
+    (change)="update(selectedBlock)"
+  >
+    <option value="row">Row</option>
+    <option value="column">Column</option>
+  </select>
+
+  <label>Justify Content:</label>
+  <select
+    *ngIf="selectedBlock.styles"
+    [(ngModel)]="selectedBlock.styles.justifyContent"
+    (change)="update(selectedBlock)"
+  >
+    <option value="flex-start">Start</option>
+    <option value="center">Center</option>
+    <option value="flex-end">End</option>
+    <option value="space-between">Space Between</option>
+    <option value="space-around">Space Around</option>
+  </select>
+
+  <label>Align Items:</label>
+  <select
+    *ngIf="selectedBlock.styles"
+    [(ngModel)]="selectedBlock.styles.alignItems"
+    (change)="update(selectedBlock)"
+  >
+    <option value="flex-start">Start</option>
+    <option value="center">Center</option>
+    <option value="flex-end">End</option>
+    <option value="stretch">Stretch</option>
+  </select>
+
+  <label>Font Size:</label>
+  <input
+    type="text"
+    *ngIf="selectedBlock.styles"
+    [(ngModel)]="selectedBlock.styles.fontSize"
+    (input)="update(selectedBlock)"
+    placeholder="e.g. 16px"
+  />
+
+  <label>Text Color:</label>
+  <input
+    type="color"
+    *ngIf="selectedBlock.styles"
+    [(ngModel)]="selectedBlock.styles.color"
+    (input)="update(selectedBlock)"
+  />
+
+  <label>Background Color:</label>
+  <input
+    type="color"
+    *ngIf="selectedBlock.styles"
+    [(ngModel)]="selectedBlock.styles.backgroundColor"
+    (input)="update(selectedBlock)"
+  />
 </div>

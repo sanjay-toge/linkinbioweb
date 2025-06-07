@@ -1,0 +1,57 @@
+<div
+  class="block-wrapper"
+  [ngSwitch]="block.type"
+  cdkDrag
+  [cdkDragData]="block"
+>
+  <!-- TEXT -->
+  <p (click)="update($event)" [ngStyle]="block.styles" *ngSwitchCase="'text'">
+    {{ block.content || "Text" }}
+  </p>
+  <a
+    (click)="update($event)"
+    [ngStyle]="block.styles"
+    *ngSwitchCase="'link'"
+    [href]="block.props?.href || '#'"
+    target="_blank"
+  >
+    {{ block.content || "Link" }}
+  </a>
+  <!-- BUTTON -->
+  <button
+    (click)="update($event)"
+    [ngStyle]="block.styles"
+    *ngSwitchCase="'button'"
+  >
+    {{ block.content || "Button" }}
+  </button>
+
+  <!-- IMAGE -->
+  <img
+    (click)="update($event)"
+    [ngStyle]="block.styles"
+    *ngSwitchCase="'image'"
+    [src]="block.props?.src || ''"
+    alt="{{ block.props?.alt || 'Image' }}"
+  />
+
+  <!-- CONTAINER -->
+  <div
+    *ngSwitchCase="'container'"
+    class="container"
+    [id]="'dropList-' + block.id"
+    cdkDropList
+    [cdkDropListData]="block.children || []"
+    [cdkDropListConnectedTo]="parentDropListIds"
+    (cdkDropListDropped)="onDrop($event)"
+    [ngStyle]="block.styles"
+    (click)="update($event)"
+  >
+    <app-block-renderer
+      *ngFor="let child of block.children; trackBy: trackByBlock"
+      [block]="child"
+      [parentDropListIds]="parentDropListIds"
+      (blockUpdated)="onBlockUpdated($event)"
+    ></app-block-renderer>
+  </div>
+</div>

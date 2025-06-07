@@ -1,14 +1,58 @@
+// .canvas {
+//   border: 2px dashed #ccc;
+//   padding: 10px;
+//   min-height: 200px;
+//   // background: #f9f9f9;
+// }
+
+// // .block-container {
+// //   border: 1px solid #aaa;
+// //   padding: 10px;
+// //   margin: 10px 0;
+// //   // background: #eef;
+// // // }
+
+// // .container-drop-area {
+// //   border: 1px dashed #88a;
+// //   min-height: 100px;
+// //   padding: 10px;
+// //   // background-color: #f0f8ff;
+// // }
+
+// .simple-block {
+//   margin: 8px 0;
+//   padding: 6px;
+//   border: 1px solid #ddd;
+//   // background: white;
+//   cursor: move;
+// }
+// .canvas-container {
+//   width: 80%;
+// }
 .canvas {
   border: 2px dashed #ccc;
-  min-height: 400px;
-  padding: 20px;
+  padding: 10px;
+  min-height: 200px;
+  // background: #f9f9f9;
+}
+// .canvas:hover {
+//   background-color: #724646; /* or any color you like */
+// }
+.block-container {
+  border: 1px solid #aaa;
+  padding: 10px;
+  margin: 10px 0;
 }
 
-.canvas-item {
-  margin-bottom: 10px;
-  background: #f9f9f9;
-  border: 1px solid #aaa;
-  padding: 8px;
-  border-radius: 4px;
+.container-drop-area {
+  border: 1px dashed #88a;
+  min-height: 100px;
+  padding: 10px;
+}
+
+.simple-block {
+  margin: 8px 0;
+  padding: 6px;
+  border: 1px solid #ddd;
   cursor: move;
 }

@@ -1,0 +1,22 @@
+.container-block {
+    min-height: 120px;
+    width: 100%;
+    border: 1px dotted #e0e0e0;
+}
+
+.block-container,
+.container {
+    min-height: 120px;
+    width: 100%;
+    border: 1px dotted #e0e0e0;
+    /* padding: 8px 8px 8px 8px; */
+}
+/* .container:hover{
+    background-color: aquamarine;
+} */    
+
+.block-wrapper {
+    z-index: 1;
+    position: relative;
+    padding: 5px 5px 5px 5px;
+}

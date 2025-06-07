@@ -15,6 +15,8 @@ export class ToolboxComponent {
     { id: '', type: 'button', content: 'Click Me' },
     { id: '', type: 'text', content: 'Edit this text' },
     { id: '', type: 'image', content: 'https://via.placeholder.com/150' },
-    { id: '', type: 'link', content: 'Click Here', props: { href: 'https://example.com' } }
+    { id: '', type: 'link', content: 'Click Here', props: { href: 'https://example.com' } },
+    { id: '', type: 'container', props: {}, children: [] }
+
   ];
 }

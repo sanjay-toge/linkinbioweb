@@ -33,3 +33,10 @@ a {
             filled-disabled-container-color: red,
         ));
 }
+
+
+
+.cdk-drop-list-dragging .container {
+  border: 2px dashed #42a5f5;
+  background-color: #e3f2fd;
+}
