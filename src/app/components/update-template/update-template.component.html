@@ -1,59 +1,12 @@
-<!-- Toolbox -->
-<mat-card
-  class="toolbox"
-  cdkDropList
-  id="toolboxList"
-  [cdkDropListData]="toolboxItems"
-  [cdkDropListConnectedTo]="['canvasList']"
->
-  <mat-card-title>Toolbox</mat-card-title>
-  <div
-    *ngFor="let item of toolboxItems"
-    cdkDrag
-    [cdkDragData]="item"
-    class="toolbox-item"
-  >
-    <mat-chip color="primary" selected>{{ item.label }}</mat-chip>
-  </div>
-</mat-card>
+<div class="editor-wrapper">
+  <app-toolbox></app-toolbox>
 
-<!-- Canvas -->
-<mat-card
-  class="canvas"
-  cdkDropList
-  id="canvasList"
-  [cdkDropListData]="droppedElements"
-  [cdkDropListConnectedTo]="['toolboxList']"
-  (cdkDropListDropped)="onDrop($event)"
->
-  <mat-card-title>Canvas</mat-card-title>
+  <app-canvas [blocks]="blocks" class="canvas-container" (blockSelected)="onBlockSelected($event)">
+  </app-canvas>
 
-  <div
-    *ngFor="let element of droppedElements; let i = index"
-    cdkDrag
-    class="canvas-item"
-    (click)="editElement(i)"
+  <app-properties-panel
+    [selectedBlock]="selectedBlock"
+    (updateBlock)="onUpdateBlock($event)"
   >
-    <ng-container [ngSwitch]="element.type">
-      <img *ngSwitchCase="'image'" src="" alt="Err" />
-      <button
-        mat-raised-button
-        *ngSwitchCase="'button'"
-        [ngStyle]="element.styles"
-      >
-        {{ element.text }}
-      </button>
-      <mat-form-field
-        *ngSwitchCase="'input'"
-        [ngStyle]="element.styles"
-        appearance="fill"
-      >
-        <mat-label>{{ element.text }}</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <a *ngSwitchCase="'link'" [ngStyle]="element.styles" href="#">{{
-        element.text
-      }}</a>
-    </ng-container>
-  </div>
-</mat-card>
+  </app-properties-panel>
+</div>

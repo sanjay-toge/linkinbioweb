@@ -7,6 +7,10 @@ import { MatFormField, MatLabel } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
+import { Block } from '../../model/block.model';
+import { ToolboxComponent } from '../shared/toolbox/toolbox.component';
+import { PropertiesPanelComponent } from '../shared/properties-panel/properties-panel.component';
+import { CanvasComponent } from '../shared/canvas/canvas.component';
 
 @Component({
   selector: 'app-update-template',
@@ -16,41 +20,34 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     MatCardModule,
     MatChipsModule,
-    MatLabel,
+    // MatLabel,
     MatFormFieldModule,
     DragDropModule,
-    FormsModule
+    FormsModule,
+    ToolboxComponent,
+    PropertiesPanelComponent,
+    CanvasComponent
   ]
 })
 export class UpdateTemplateComponent {
-  toolboxItems = [
-     { type: 'button', label: 'Button', text: 'Click Me' },
-    { type: 'input', label: 'Input', text: 'Enter Text' },
-    { type: 'link', label: 'Link', text: 'Visit Link' },
-    { type: 'grid', label: 'Grid Layout', children: [] },
-    { type: 'flex', label: 'Flex Layout', children: [] }
-  ];
-  
-  droppedElements: any[] = [];
-  selectedElement: number | null = null;
+  blocks: Block[] = [];
+  selectedBlock: Block | null = null;
 
-  onDrop(event: CdkDragDrop<any[]>) {
-    if (event.previousContainer === event.container) {
-      // Reordering inside canvas
-      moveItemInArray(this.droppedElements, event.previousIndex, event.currentIndex);
-    } else {
-      // From toolbox to canvas
-      const newElement = JSON.parse(JSON.stringify(event.item.data));
-      newElement.styles = {
-        color: '#000000',
-        fontSize: 16,
-        width: 'auto'
-      };
-      this.droppedElements.splice(event.currentIndex, 0, newElement);
-    }
+  // Called when a block is selected in the canvas
+  onBlockSelected(block: Block) {
+    this.selectedBlock = block;
   }
 
-  editElement(index: number) {
-    this.selectedElement = index;
+  // Called when the properties panel emits an update
+  onUpdateBlock(updatedBlock: Block) {
+    const index = this.blocks.findIndex(b => b.id === updatedBlock.id);
+    if (index !== -1) {
+      this.blocks[index] = { ...updatedBlock };
+    }
+
+    // Also update the selected block to reflect new values in real-time
+    if (this.selectedBlock && this.selectedBlock.id === updatedBlock.id) {
+      this.selectedBlock = { ...updatedBlock };
+    }
   }
 }

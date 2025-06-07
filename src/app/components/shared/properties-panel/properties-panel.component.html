@@ -1,0 +1,7 @@
+<div *ngIf="selectedBlock">
+  <label>Content</label>
+  <input [(ngModel)]="selectedBlock.content" />
+
+  <label *ngIf="selectedBlock.type === 'link'">URL</label>
+  <input *ngIf="selectedBlock.type === 'link'" [(ngModel)]="selectedBlock.props.href" />
+</div>

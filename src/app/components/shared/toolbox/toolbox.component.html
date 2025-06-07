@@ -1,0 +1,14 @@
+<!-- <div cdkDropListGroup>
+  <div *ngFor="let item of toolboxItems" cdkDrag [cdkDragData]="item">
+    {{ item.type | titlecase }}
+  </div>
+</div> -->
+
+<div
+  *ngFor="let item of toolboxItems"
+  cdkDrag
+  [cdkDragData]="item"
+  class="toolbox-item"
+>
+  {{ item.type | titlecase }}
+</div>

@@ -1,0 +1,14 @@
+.canvas {
+  border: 2px dashed #ccc;
+  min-height: 400px;
+  padding: 20px;
+}
+
+.canvas-item {
+  margin-bottom: 10px;
+  background: #f9f9f9;
+  border: 1px solid #aaa;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: move;
+}

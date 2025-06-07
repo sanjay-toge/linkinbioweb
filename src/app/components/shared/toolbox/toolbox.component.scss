@@ -1,0 +1,22 @@
+.toolbox {
+  width: 200px;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+}
+
+.toolbox-item {
+  // background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: grab;
+  text-align: center;
+  transition: background-color 0.2s ease;
+  border-radius: 4px;
+}
+
+.toolbox-item:hover {
+  background-color: #e0e0e0;
+}

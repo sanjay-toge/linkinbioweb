@@ -1,0 +1,41 @@
+<!-- <div cdkDropList class="canvas" (cdkDropListDropped)="onDrop($event)">
+  <div *ngFor="let block of blocks" (click)="selectBlock(block)">
+    <ng-container [ngSwitch]="block.type">
+      <button *ngSwitchCase="'button'">
+        {{ block.content || "Click Me" }}
+      </button>
+      <p *ngSwitchCase="'text'">{{ block.content || "Text Here" }}</p>
+      <img
+        *ngSwitchCase="'image'"
+        [src]="block.content || 'https://via.placeholder.com/150'"
+      />
+      <a *ngSwitchCase="'link'" [href]="block.props?.href">{{
+        block.content || "My Link"
+      }}</a>
+    </ng-container>
+  </div>
+</div> -->
+
+<!-- Canvas Drop List -->
+<div
+  cdkDropList
+  [cdkDropListData]="blocks"
+  (cdkDropListDropped)="onDrop($event)"
+  class="canvas"
+>
+  <!-- Render dropped blocks -->
+  <div
+    *ngFor="let block of blocks"
+    cdkDrag
+    class="canvas-item"
+    (click)="selectBlock(block)"
+  >
+    <ng-container [ngSwitch]="block.type">
+      <button *ngSwitchCase="'button'">{{ block.content }}</button>
+      <p *ngSwitchCase="'text'">{{ block.content }}</p>
+      <img *ngSwitchCase="'image'" [src]="block.content" />
+      <a *ngSwitchCase="'link'" [href]="block.props?.href">{{ block.content }}</a>
+    </ng-container>
+  </div>
+</div>
+
