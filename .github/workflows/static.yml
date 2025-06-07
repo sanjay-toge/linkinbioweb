@@ -34,7 +34,7 @@ jobs:
         run: npm install
 
       - name: 🛠️ Build Angular project
-        run: npx ng build --output-path=docs/browser --base-href=/linkinbioweb/
+        run: npx ng build --output-path=docs --base-href=/linkinbioweb/
 
       - name: 📁 Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
