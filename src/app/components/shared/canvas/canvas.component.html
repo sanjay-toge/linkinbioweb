@@ -19,14 +19,17 @@
 <!-- Canvas Drop List -->
 <div
   cdkDropList
+  id="canvas"
+  [cdkDropListConnectedTo]="['toolbox']"
   [cdkDropListData]="blocks"
-  (cdkDropListDropped)="onDrop($event)"
   class="canvas"
+  (cdkDropListDropped)="onDrop($event)"
 >
   <!-- Render dropped blocks -->
   <div
     *ngFor="let block of blocks"
     cdkDrag
+    [cdkDragData]="block"
     class="canvas-item"
     (click)="selectBlock(block)"
   >
@@ -34,8 +37,9 @@
       <button *ngSwitchCase="'button'">{{ block.content }}</button>
       <p *ngSwitchCase="'text'">{{ block.content }}</p>
       <img *ngSwitchCase="'image'" [src]="block.content" />
-      <a *ngSwitchCase="'link'" [href]="block.props?.href">{{ block.content }}</a>
+      <a *ngSwitchCase="'link'" [href]="block.props?.href">{{
+        block.content
+      }}</a>
     </ng-container>
   </div>
 </div>
-

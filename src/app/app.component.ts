@@ -33,7 +33,8 @@ import { MatListModule } from '@angular/material/list';
     MatGridTile,
     CommonModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    DragDropModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
