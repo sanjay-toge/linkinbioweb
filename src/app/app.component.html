@@ -1,10 +1,3 @@
-<!-- <mat-toolbar color="primary">
-  <span>Link in Bio</span>
-  <span class="spacer"></span>
-  <a mat-button routerLink="/dashboard">Dashboard</a>
-  <a mat-button routerLink="/preview">Preview</a>
-</mat-toolbar> -->
-
 <!-- <app-top-nav></app-top-nav> -->
 <mat-sidenav-container class="nav-container">
   <mat-sidenav
@@ -14,81 +7,6 @@
     (opened)="events.push('open!')"
     (closed)="events.push('close!')"
   >
-    <!-- <div class="sidebar">
-      <div class="flex items-center mb-8">
-        <span class=" text-2xl font-bold">CineMorph</span>
-        <span
-          class="ml-2 bg-purple-100  text-xs font-semibold px-2 py-0.5 rounded"
-          >Pro</span
-        >
-      </div>
-      <div
-        class="flex d-flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 mb-6"
-      >
-        <div class="flex items-center">
-          <span
-            class="bg-pink-500 text-white text-sm font-semibold rounded-full w-8 h-8 flex items-center justify-center"
-            >S</span
-          >
-          <span class="ml-3 text-gray-700 font-medium">Sergey Space</span>
-        </div>
-        <span class="material-icons text-gray-400">unfold_more</span>
-      </div>
-      <nav class="space-y-2 flex-grow d-grid">
-        <a
-          class="flex items-center p-3 rounded-lg  bg-purple-50 active"
-          href="#"
-        >
-          <span class="material-icons sidebar-icon">dashboard</span>
-          <span class="ml-3 font-semibold">Dashboard</span>
-        </a>
-        <a
-          class="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-50"
-          href="#"
-        >
-          <span class="material-icons sidebar-icon">movie_creation</span>
-          <span class="ml-3 font-medium">Generate Video</span>
-        </a>
-        <a
-          class="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-50"
-          href="#"
-        >
-          <span class="material-icons sidebar-icon">folder_open</span>
-          <span class="ml-3 font-medium">My Projects</span>
-        </a>
-        <a
-          class="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-50"
-          href="#"
-        >
-          <span class="material-icons sidebar-icon">layers</span>
-          <span class="ml-3 font-medium">Templates</span>
-        </a>
-        <a
-          class="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-50"
-          href="#"
-        >
-          <span class="material-icons sidebar-icon">auto_awesome</span>
-          <span class="ml-3 font-medium">AI Tools</span>
-        </a>
-        <a
-          class="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-50"
-          href="#"
-        >
-          <span class="material-icons sidebar-icon">settings</span>
-          <span class="ml-3 font-medium">Settings</span>
-        </a>
-      </nav>
-      <button
-        class="w-full flex items-center justify-center py-3 px-4 bg-purple-50  font-medium rounded-lg hover:bg-purple-100"
-      >
-        <span class="material-icons sidebar-icon mr-2">add_circle_outline</span>
-        Invite new member
-      </button>
-      <p class="text-xs text-gray-400 mt-4 text-center">
-        Made with <span class="text-purple-500">Visily</span>
-      </p>
-    </div> -->
-
     <div class="sidebar-container">
       <div class="logo-section">
         <h2 class="brand">Sutr</h2>
@@ -147,12 +65,11 @@
 
     <!-- sidebar -->
   </mat-sidenav>
-
   <mat-sidenav-content>
     <mat-grid-list cols="12" rowHeight="100%" gutterSize="0px">
       <!-- 10% width (1 out of 10 columns) -->
       <mat-grid-tile
-        *ngIf="!opened"
+        *ngIf="!opened && isDesktop"
         [colspan]="1"
         style="background: lightblue"
       >
@@ -169,36 +86,48 @@
       <mat-grid-tile [colspan]="opened ? 12 : 11">
         <div class="content">
           <mat-toolbar color="primary" class="topbar">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Menu"
+              class="menu-icon"
+              fontIcon="toc"
+              (click)="sidenav.toggle()"
+            ></mat-icon>
+
             <span class="title">{{ this.selectedRoute }}</span>
+            <ng-container *ngIf="isDesktop">
+              <span class="spacer"></span>
 
-            <span class="spacer"></span>
+              <mat-form-field appearance="outline" class="search-field">
+                <mat-icon matPrefix>search</mat-icon>
+                <input
+                  matInput
+                  placeholder="Search for projects, files, templates..."
+                />
+              </mat-form-field>
 
-            <mat-form-field appearance="outline" class="search-field">
-              <mat-icon matPrefix>search</mat-icon>
-              <input
-                matInput
-                placeholder="Search for projects, files, templates..."
-              />
-            </mat-form-field>
+              <button mat-icon-button aria-label="Help">
+                <mat-icon>help_outline</mat-icon>
+              </button>
 
-            <button mat-icon-button aria-label="Help">
-              <mat-icon>help_outline</mat-icon>
-            </button>
+              <button mat-icon-button aria-label="Notifications">
+                <mat-icon>notifications_none</mat-icon>
+              </button>
 
-            <button mat-icon-button aria-label="Notifications">
-              <mat-icon>notifications_none</mat-icon>
-            </button>
-
-            <button mat-icon-button class="avatar-button">
-              <img
-                class="avatar"
-                src="https://i.pravatar.cc/300?img=3"
-                alt="User Avatar"
-              />
-            </button>
+              <button mat-icon-button class="avatar-button">
+                <img
+                  class="avatar"
+                  src="https://i.pravatar.cc/300?img=3"
+                  alt="User Avatar"
+                />
+              </button>
+            </ng-container>
           </mat-toolbar>
 
-          <router-outlet></router-outlet>
+          <!-- Scrollable router-outlet wrapper -->
+          <div class="router-scroll-wrapper">
+            <router-outlet></router-outlet>
+          </div>
         </div>
       </mat-grid-tile>
     </mat-grid-list>

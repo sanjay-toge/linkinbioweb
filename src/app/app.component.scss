@@ -181,3 +181,19 @@ mat-nav-list {
 ::ng-deep a.nav-item mat-icon {
   color: #1976d2 !important;
 } */
+.menu-icon {
+  margin-right: 15px;
+}
+.nav-container {
+  min-height: 100vh; // or remove height entirely
+  display: block;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; // Full viewport height
+}
+
+.topbar {
+  flex: 0 0 auto; // Do not grow/shrink
+}

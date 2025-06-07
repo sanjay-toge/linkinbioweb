@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -13,6 +13,7 @@ import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 // import { AppRoutingModule } from './app-routing.module';
 
@@ -39,11 +40,22 @@ import { MatListModule } from '@angular/material/list';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'LinkBioWeb';
   events: string[] = [];
   opened: boolean = true;
   selectedRoute: string = 'Dashboard';
+  isDesktop: boolean = false;
+  constructor(private breakpointObserver: BreakpointObserver) { }
+
+  ngOnInit(): void {
+    this.breakpointObserver.observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
+      .subscribe(result => {
+        this.isDesktop = result.matches;
+        this.opened = this.isDesktop;
+      });
+  }
+
   handleNavClick(event: Event) {
     const target = event.target as HTMLElement;
     const anchor = target.closest('a[mat-list-item]');
