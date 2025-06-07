@@ -11,6 +11,14 @@
       <div class="logo-section">
         <h2 class="brand">Sutr</h2>
         <span class="badge">Pro</span>
+         <mat-icon
+              aria-hidden="false"
+              aria-label="Menu"
+              *ngIf="opened && !isDesktop"
+              class="menu-icon-close"
+              fontIcon="close"
+              (click)="sidenav.toggle()"
+            ></mat-icon>
       </div>
 
       <div class="user-section">
@@ -90,10 +98,10 @@
               aria-hidden="false"
               aria-label="Menu"
               class="menu-icon"
+              *ngIf="!opened && !isDesktop"
               fontIcon="toc"
               (click)="sidenav.toggle()"
             ></mat-icon>
-
             <span class="title">{{ this.selectedRoute }}</span>
             <ng-container *ngIf="isDesktop">
               <span class="spacer"></span>
