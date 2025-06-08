@@ -61,6 +61,11 @@ export class AppComponent implements OnInit {
     const anchor = target.closest('a[mat-list-item]');
 
     if (anchor) {
+      // Remove 'active' from all mat-list-items
+      document.querySelectorAll('a[mat-list-item].active').forEach(el => el.classList.remove('active'));
+
+      // Add 'active' to the clicked one
+      anchor.classList.add('active');
       const route = anchor.getAttribute('routerLink');
       console.log('Navigated to:', route);
       this.selectedRoute = anchor.getElementsByTagName('span')[2].innerHTML

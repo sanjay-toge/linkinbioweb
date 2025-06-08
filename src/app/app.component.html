@@ -11,14 +11,14 @@
       <div class="logo-section">
         <h2 class="brand">Sutr</h2>
         <span class="badge">Pro</span>
-         <mat-icon
-              aria-hidden="false"
-              aria-label="Menu"
-              *ngIf="opened && !isDesktop"
-              class="menu-icon-close"
-              fontIcon="close"
-              (click)="sidenav.toggle()"
-            ></mat-icon>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Menu"
+          *ngIf="opened && !isDesktop"
+          class="menu-icon-close"
+          fontIcon="close"
+          (click)="sidenav.toggle()"
+        ></mat-icon>
       </div>
 
       <div class="user-section">
@@ -41,6 +41,15 @@
         <a mat-list-item class="nav-item" routerLink="/my-stats">
           <mat-icon>folder</mat-icon>
           <span>My Stats</span>
+        </a>
+        <a mat-list-item class="nav-item" routerLink="/page">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Menu"
+            class="menu-icon-close"
+            fontIcon="web"
+          ></mat-icon>
+          <span>Page</span>
         </a>
         <a mat-list-item class="nav-item" routerLink="/template">
           <mat-icon>layers</mat-icon>
@@ -66,7 +75,9 @@
       <div class="footer-credit">
         <small>Made with <b>Visily</b></small>
         <p>
-          <button matButton (click)="sidenav.toggle()">sidenav.toggle()</button>
+          <button matButton (click)="sidenav.toggle(); opened = false">
+            sidenav.toggle()
+          </button>
         </p>
       </div>
     </div>
@@ -83,7 +94,7 @@
       >
         <div class="sidebar">
           <p>
-            <button matButton (click)="sidenav.toggle()">
+            <button matButton (click)="sidenav.toggle(); opened = true">
               sidenav.toggle()
             </button>
           </p>
@@ -106,13 +117,13 @@
             <ng-container *ngIf="isDesktop">
               <span class="spacer"></span>
 
-              <mat-form-field appearance="outline" class="search-field">
+              <!-- <mat-form-field appearance="outline" class="search-field">
                 <mat-icon matPrefix>search</mat-icon>
                 <input
                   matInput
                   placeholder="Search for projects, files, templates..."
                 />
-              </mat-form-field>
+              </mat-form-field> -->
 
               <button mat-icon-button aria-label="Help">
                 <mat-icon>help_outline</mat-icon>

@@ -10,7 +10,20 @@
 ::ng-deep mat-grid-tile .mat-grid-tile-content {
   display: block !important;
 }
-
+@media only screen and (max-width: 960px) {
+  ::ng-deep mat-grid-tile {
+    left: 0px !important;
+    width: calc(100% + 0px) !important;
+    top: 0px !important;
+    height: calc(100% + 0px) !important;
+  }
+}
+// ::ng-deep mat-grid-tile {
+//   left: 0px !important;
+//   width: calc(100% + 0px) !important;
+//   top: 0px !important;
+//   height: calc(100% + 0px) !important;
+// }
 /* This is to ensure that the content inside mat-grid-tile is displayed as a block element */
 .sidebar {
   display: grid;
@@ -89,8 +102,8 @@ mat-nav-list {
     }
 
     &.active {
-      background-color: #f3e8ff;
-      color: #8b2eff;
+      background-color: #0e0e10;
+      color: #550cad;
 
       /* mat-icon {
                 color: #8b2eff;
@@ -175,7 +188,7 @@ mat-nav-list {
 }
 
 ::ng-deep a.nav-item span {
-  color: #1976d2 !important; /* Your desired color */
+  color: #9c9cf3 !important; /* Your desired color */
 }
 /* 
 ::ng-deep a.nav-item mat-icon {
@@ -184,7 +197,7 @@ mat-nav-list {
 .menu-icon {
   margin-right: 15px;
 }
-.menu-icon-close{
+.menu-icon-close {
   margin-left: auto;
 }
 .nav-container {
@@ -199,4 +212,26 @@ mat-nav-list {
 
 .topbar {
   flex: 0 0 auto; // Do not grow/shrink
+}
+
+.search-field {
+  border-radius: 30px; /* rounded border */
+  overflow: hidden;
+  border: 2px solid #ccc; /* border color */
+
+  .mat-form-field-outline {
+    border-radius: 30px;
+  }
+
+  .mat-form-field-flex {
+    padding: 0 !important; /* remove internal padding */
+  }
+
+  input.mat-input-element {
+    padding: 0px!important; /* optional: add controlled padding */
+  }
+
+  mat-icon {
+    margin-left: 0.5rem;
+  }
 }

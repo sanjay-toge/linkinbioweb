@@ -1,6 +1,22 @@
 <p>template works!</p>
-<div>
+<!-- <div>
     <button mat-raised-button color="primary" (click)="router.navigate(['/update-template'])">
         Go to Update Template
     </button>
+</div> -->
+<div class="template-header">
+  <h2>My Templates</h2>
+  <button mat-raised-button color="primary" (click)="createNewTemplate()">
+    + Create New Template
+  </button>
+</div>
+
+<div class="template-list">
+  <mat-card class="template-card" *ngFor="let template of templates">
+    <mat-card-title>{{ template.name }}</mat-card-title>
+    <mat-card-subtitle>Last updated: {{ template.updated }}</mat-card-subtitle>
+    <button mat-button color="accent" (click)="openTemplate(template.id)">
+      Edit
+    </button>
+  </mat-card>
 </div>

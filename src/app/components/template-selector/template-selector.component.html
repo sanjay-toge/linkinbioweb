@@ -1,0 +1,15 @@
+<p>template-selector works!</p>
+// File: template-selector.component.html
+<div class="template-selector">
+  <h3>Select Template</h3>
+  <div class="templates">
+    <div
+      *ngFor="let template of templates"
+      (click)="selectTemplate(template.id)"
+      class="template-item"
+    >
+      <img [src]="template.previewUrl" alt="Template preview" />
+      <p>{{ template.name }}</p>
+    </div>
+  </div>
+</div>

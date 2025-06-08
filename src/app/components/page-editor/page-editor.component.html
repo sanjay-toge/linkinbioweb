@@ -1,0 +1,13 @@
+<p>page-editor works!</p>
+// File: page-editor.component.html
+<div class="page-editor">
+  <h2>Edit Page</h2>
+  <app-template-selector
+    (templateSelected)="onTemplateSelected($event)"
+  ></app-template-selector>
+  <app-template-renderer
+    [templateId]="selectedTemplateId"
+    [pageId]="pageId"
+  ></app-template-renderer>
+  <button mat-raised-button color="primary" class="save-button" (click)="savePage()">Save Page</button>
+</div>

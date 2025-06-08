@@ -1,0 +1,15 @@
+.template-selector {
+  .templates {
+    display: flex;
+    gap: 16px;
+    .template-item {
+      border: 1px solid #ccc;
+      padding: 8px;
+      cursor: pointer;
+      img {
+        max-width: 100px;
+        height: auto;
+      }
+    }
+  }
+}

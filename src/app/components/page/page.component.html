@@ -1,0 +1,13 @@
+<p>page works!</p>
+// File: page-list.component.html
+<div class="page-list">
+  <h2>Your Pages</h2>
+  <button mat-raised-button color="primary" (click)="createPage()">
+    Create New Page
+  </button>
+  <ul>
+    <li *ngFor="let page of pages" (click)="editPage(page.id)">
+      {{ page.name }}
+    </li>
+  </ul>
+</div>

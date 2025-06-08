@@ -1,0 +1,20 @@
+// File: page-list.component.scss
+.page-list {
+  padding: 16px;
+  h2 {
+    font-size: 1.5rem;
+  }
+  button {
+    margin: 8px 0;
+  }
+  ul {
+    list-style: none;
+    li {
+      cursor: pointer;
+      margin: 4px 0;
+      padding: 8px;
+    //   background: #f2f2f2;
+      border-radius: 4px;
+    }
+  }
+}
